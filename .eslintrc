@@ -1,0 +1,36 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 2019,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "parser": "@babel/eslint-parser",
+    "env": {
+        "browser": true
+    },
+    "extends": ["eslint:recommended", "eslint-config-prettier"],
+    "rules": {
+        "strict": ["error", "never"]
+    },
+    "overrides": [
+        {
+          "files": ["/src/"],
+          "settings": {"import/resolver": "webpack"}
+        },
+        {
+          "files": ["/tests/"],
+          "rules": {
+            "no-console": "off"
+          },
+          "settings": {
+            "import/resolver": {
+              "jest": {
+                "jestConfigFile": path.join(__dirname, "./jest.config.js")
+              },
+            },
+          },
+        },
+      ],
+}
